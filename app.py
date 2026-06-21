@@ -28,7 +28,7 @@ st.divider()
 if st.session_state.service == "media":
     st.info("📈 You are generating an AI Media Plan")
 else:
-    st.info("🚀 You are generating a Business Growth Blueprint")
+    st.info("🚀 You are generating a full Business Growth Blueprint")
 
 store_name = st.text_input("Business / Store Name")
 store_url = st.text_input("Website / Store URL")
@@ -41,7 +41,7 @@ country = st.selectbox(
 )
 
 business_type = None
-main_goal = None
+focus_areas = []
 current_problem = None
 
 if st.session_state.service == "blueprint":
@@ -57,15 +57,23 @@ if st.session_state.service == "blueprint":
         ]
     )
 
-    main_goal = st.selectbox(
-        "Main Goal",
+    focus_areas = st.multiselect(
+        "Blueprint Focus Areas",
         [
-            "Increase Sales",
-            "Improve Ads Performance",
-            "Improve Website Conversion",
-            "SEO Growth",
-            "Understand Competitors",
-            "Build 90-Day Growth Plan"
+            "CRO Audit",
+            "SEO Audit",
+            "Media Plan",
+            "Competitor Analysis",
+            "Growth Opportunities",
+            "90-Day Roadmap"
+        ],
+        default=[
+            "CRO Audit",
+            "SEO Audit",
+            "Media Plan",
+            "Competitor Analysis",
+            "Growth Opportunities",
+            "90-Day Roadmap"
         ]
     )
 
@@ -79,8 +87,13 @@ generate = st.button("Generate Report", use_container_width=True)
 if generate:
     if not store_name or not store_url or not niche or not budget:
         st.error("Please fill all required fields.")
+
     elif st.session_state.service == "blueprint" and not current_problem:
         st.error("Please describe the current main problem.")
+
+    elif st.session_state.service == "blueprint" and not focus_areas:
+        st.error("Please select at least one focus area.")
+
     else:
         with st.spinner("Generating report..."):
             if st.session_state.service == "media":
@@ -101,7 +114,7 @@ if generate:
                     budget=budget,
                     country=country,
                     business_type=business_type,
-                    main_goal=main_goal,
+                    main_goal=", ".join(focus_areas),
                     current_problem=current_problem
                 )
                 file_name = "business_growth_blueprint.html"

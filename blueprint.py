@@ -15,6 +15,17 @@ def generate_blueprint(store_name, store_url, niche, budget, country, business_t
     system_prompt = """
     You are a senior Saudi growth consultant.
     Create a Business Growth Blueprint in professional Saudi Arabic.
+    Important:
+    The selected Focus Areas do NOT replace the report sections.
+    You must always include all Blueprint sections:
+    - CRO Audit
+    - SEO Audit
+    - Media Plan
+    - Competitor Analysis
+    - Growth Opportunities
+    - 90-Day Roadmap
+
+    Use the selected Focus Areas only to decide which sections deserve deeper analysis.
     The report must be customized, practical, and business-friendly.
 
     Include:
@@ -161,7 +172,7 @@ def generate_blueprint(store_name, store_url, niche, budget, country, business_t
     Business Type: {business_type}
     Monthly Budget: {budget}
     Country: {country}
-    Main Goal: {main_goal}
+    Selected Focus Areas: {main_goal}
     Current Problem: {current_problem}
 
     Website Data:
