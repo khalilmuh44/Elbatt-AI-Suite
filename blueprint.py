@@ -11,7 +11,8 @@ client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 def generate_blueprint(store_name, store_url, niche, budget, country, business_type, main_goal, current_problem):
     store_data = fetch_store_page(store_url)
-
+    logo_url = store_data.get("brand_assets", {}).get("logo_url")
+    logo_html = f'<img src="{logo_url}" class="logo" alt="Store Logo">' if logo_url else ""
     system_prompt = """
     You are a senior Saudi growth consultant.
     Create a Business Growth Blueprint in professional Saudi Arabic.
@@ -104,7 +105,7 @@ def generate_blueprint(store_name, store_url, niche, budget, country, business_t
     | فرص الظهور في Google | 6/10 | توجد فرص لتحسين صفحات المنتجات والمحتوى. |
     | فرص النمو خلال 90 يوم | 8/10 | توجد فرص واضحة لتحسين التحويل وزيادة المبيعات. |
 
-    التقييم النهائي للنمو هو: 7
+   FINAL_SCORE: 7
 
     ---
 
@@ -244,8 +245,9 @@ def generate_blueprint(store_name, store_url, niche, budget, country, business_t
     <meta charset="UTF-8">
     <title>Business Growth Blueprint - {store_name}</title>
     <style>
-    body {{
+    html, body {{
         margin:0;
+        padding:0;
         font-family: Tahoma, Arial, sans-serif;
         direction:rtl;
         background:#061A45;
@@ -256,68 +258,82 @@ def generate_blueprint(store_name, store_url, niche, budget, country, business_t
         max-width:1100px;
         margin:auto;
         background:#061A45;
+        padding-bottom:25px;
     }}
 
     .cover {{
-        padding:60px 50px;
+        padding:42px 50px;
         background:linear-gradient(135deg,#061A45,#0B255F);
-        border-bottom:6px solid #FF6A00;
+        border-bottom:5px solid #FF6A00;
+        text-align:center;
+    }}
+
+    .logo {{
+        max-height:80px;
+        max-width:180px;
+        object-fit:contain;
+        background:white;
+        padding:12px;
+        border-radius:16px;
+        margin-bottom:20px;
     }}
 
     h1 {{
-        font-size:38px;
+        font-size:36px;
         color:white;
+        margin:0 0 12px;
     }}
 
     h2 {{
         color:#FF6A00;
         border-right:6px solid #FF6A00;
         padding-right:14px;
-        margin-top:40px;
+        margin-top:28px;
+        margin-bottom:14px;
     }}
 
     p, li {{
-        font-size:18px;
-        line-height:2;
+        font-size:17px;
+        line-height:1.75;
     }}
 
     table {{
         width:100%;
         border-collapse:collapse;
-        margin:25px 0;
+        margin:16px 0;
     }}
 
     th {{
         background:#FF6A00;
         color:#061A45;
-        padding:12px;
+        padding:10px;
     }}
 
     td {{
         background:rgba(255,255,255,.07);
         border:1px solid rgba(255,255,255,.15);
-        padding:12px;
+        padding:10px;
     }}
 
     .score {{
         background:#FF6A00;
         color:#061A45;
         text-align:center;
-        padding:30px;
-        font-size:48px;
+        padding:24px;
+        font-size:46px;
         font-weight:bold;
-        margin:40px auto;
+        margin:30px auto;
         max-width:350px;
         border-radius:18px;
     }}
 
     .content {{
-        padding:45px;
+        padding:30px 45px 20px;
     }}
 
     .footer {{
-        margin-top:50px;
-        padding-top:25px;
+        margin-top:25px;
+        padding-top:18px;
         border-top:1px solid rgba(255,255,255,.18);
         text-align:center;
         color:rgba(255,255,255,.75);
@@ -330,10 +346,11 @@ def generate_blueprint(store_name, store_url, niche, budget, country, business_t
     </head>
     <body>
     <div class="report">
-        <div class="cover">
-            <h1>🚀 Business Growth Blueprint</h1>
-            <p>تقرير نمو مخصص لمشروع {store_name}</p>
-        </div>
+    <div class="cover">
+    {logo_html}
+    <h1>🚀 Business Growth Blueprint</h1>
+    <p>تقرير نمو مخصص لمشروع {store_name}</p>
+     </div>
         <div class="content">
             <div class="score">{final_score}/10</div>
             {report_html_body}
