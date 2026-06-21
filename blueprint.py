@@ -251,45 +251,54 @@ def generate_blueprint(store_name, store_url, niche, budget, country, business_t
         background:#061A45;
         color:white;
     }}
+
     .report {{
         max-width:1100px;
         margin:auto;
         background:#061A45;
     }}
+
     .cover {{
         padding:60px 50px;
         background:linear-gradient(135deg,#061A45,#0B255F);
         border-bottom:6px solid #FF6A00;
     }}
+
     h1 {{
         font-size:38px;
         color:white;
     }}
+
     h2 {{
         color:#FF6A00;
         border-right:6px solid #FF6A00;
         padding-right:14px;
         margin-top:40px;
     }}
-    p,li {{
+
+    p, li {{
         font-size:18px;
         line-height:2;
     }}
+
     table {{
         width:100%;
         border-collapse:collapse;
         margin:25px 0;
     }}
+
     th {{
         background:#FF6A00;
         color:#061A45;
         padding:12px;
     }}
+
     td {{
         background:rgba(255,255,255,.07);
         border:1px solid rgba(255,255,255,.15);
         padding:12px;
     }}
+
     .score {{
         background:#FF6A00;
         color:#061A45;
@@ -301,19 +310,23 @@ def generate_blueprint(store_name, store_url, niche, budget, country, business_t
         max-width:350px;
         border-radius:18px;
     }}
+
     .content {{
         padding:45px;
-
     }}
-    .footer {
-        margin-top: 50px;
-        padding-top: 25px;
-        border-top: 1px solid rgba(255,255,255,.18);
-        text-align: center;
-        color: rgba(255,255,255,.75);
-        font-size: 14px;
-    }
-    </style>
+
+    .footer {{
+        margin-top:50px;
+        padding-top:25px;
+        border-top:1px solid rgba(255,255,255,.18);
+        text-align:center;
+        color:rgba(255,255,255,.75);
+        font-size:14px;
+    }}
+</style>
+    
+
+
     </head>
     <body>
     <div class="report">
