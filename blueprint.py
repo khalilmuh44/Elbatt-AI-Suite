@@ -15,6 +15,7 @@ def generate_blueprint(store_name, store_url, niche, budget, country, business_t
     system_prompt = """
     You are a senior Saudi growth consultant.
     Create a Business Growth Blueprint in professional Saudi Arabic.
+
     Important:
     The selected Focus Areas do NOT replace the report sections.
     You must always include all Blueprint sections:
@@ -43,9 +44,17 @@ def generate_blueprint(store_name, store_url, niche, budget, country, business_t
     Use advisory tone.
     Output in Markdown.
     Use tables where useful.
+
     When the target country is Saudi Arabia, prioritize Snapchat, Google Ads, Instagram and TikTok. Do not recommend Facebook as a primary acquisition channel unless there is a specific reason.
-    في النهاية اكتب السطر التالي:
-    التقييم النهائي للنمو هو: [رقم من 10]
+
+    At the very end of the response, write this machine-readable line exactly:
+    FINAL_SCORE: [number from 1 to 10]
+
+    Important:
+    - Do not mention the final score anywhere else in the report.
+    - Do not write "التقييم النهائي للنمو هو" anywhere in the report.
+    - The FINAL_SCORE line is only for code parsing and must not be part of the client-facing report.
+    - The score can include decimals, مثل 6.5 أو 7.2.
     """
     
     example_user = """
@@ -197,10 +206,23 @@ def generate_blueprint(store_name, store_url, niche, budget, country, business_t
 )
 
     report_markdown = response.choices[0].message.content
-    report_html_body = markdown.markdown(report_markdown, extensions=["tables"])
 
-    match = re.search(r"التقييم النهائي للنمو هو:\s*(\d+)", report_markdown)
+    match = re.search(
+        r"FINAL_SCORE:\s*(\d+(?:\.\d+)?)",
+        report_markdown
+    )
     final_score = match.group(1) if match else "8"
+
+    report_markdown = re.sub(
+        r"FINAL_SCORE:\s*\d+(?:\.\d+)?",
+        "",
+        report_markdown
+    ).strip()
+
+    report_html_body = markdown.markdown(
+        report_markdown,
+        extensions=["tables"]
+    )
 
     html_template = f"""
     <!DOCTYPE html>
@@ -280,6 +302,9 @@ def generate_blueprint(store_name, store_url, niche, budget, country, business_t
         <div class="content">
             <div class="score">{final_score}/10</div>
             {report_html_body}
+            <div class="footer">
+                تم إعداد هذا التقرير بواسطة شركة أمين للحلول التسويقية والنمو الرقمي
+            </div>
         </div>
     </div>
     </body>
