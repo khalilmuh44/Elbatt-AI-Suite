@@ -43,7 +43,7 @@ def generate_blueprint(store_name, store_url, niche, budget, country, business_t
     Use advisory tone.
     Output in Markdown.
     Use tables where useful.
-
+    When the target country is Saudi Arabia, prioritize Snapchat, Google Ads, Instagram and TikTok. Do not recommend Facebook as a primary acquisition channel unless there is a specific reason.
     في النهاية اكتب السطر التالي:
     التقييم النهائي للنمو هو: [رقم من 10]
     """
