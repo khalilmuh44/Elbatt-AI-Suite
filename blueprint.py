@@ -355,7 +355,7 @@ def generate_blueprint(store_name, store_url, niche, budget, country, business_t
             <div class="score">{final_score}/10</div>
             {report_html_body}
             <div class="footer">
-         تم إعداد هذا التقرير بواسطة شركة أمين للحلول التسويقية والنمو الرقمي
+         تم إعداد هذا التقرير بواسطة شركة البط للحلول التسويقية والنمو الرقمي
            </div>
         </div>
     </div>
