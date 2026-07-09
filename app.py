@@ -3,25 +3,23 @@ from media_plan import generate_media_plan
 from blueprint import generate_blueprint
 
 st.set_page_config(
-    page_title="Ameen AI Suite",
+    page_title="Elbatt AI Suite",
     layout="wide"
 )
 
-st.title("🚀 Elbatt AI Suite")
-st.subheader("AI Growth Reports Generator")
+st.image(
+    "assets/hero.png",
+    use_container_width=True
+)
 
-if "service" not in st.session_state:
-    st.session_state.service = "media"
-
-col1, col2 = st.columns(2)
+col1, col2 = st.columns([1,6])
 
 with col1:
-    if st.button("📈 Media Plan", use_container_width=True):
-        st.session_state.service = "media"
+    st.image("assets/logo.png", width=80)
 
 with col2:
-    if st.button("🚀 Business Growth Blueprint", use_container_width=True):
-        st.session_state.service = "blueprint"
+    st.title("Elbatt AI Suite")
+    st.caption("AI Growth Reports Generator")
 
 st.divider()
 
