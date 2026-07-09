@@ -2,6 +2,7 @@ from styles.theme import *
 
 REPORT_CSS = f"""
 <style>
+
 html, body {{
     margin: 0;
     padding: 0;
@@ -52,7 +53,8 @@ h3 {{
     color: {SECONDARY};
 }}
 
-p, li {{
+p,
+li {{
     font-size: 17px;
     line-height: 1.85;
 }}
@@ -66,7 +68,7 @@ table {{
 
 th {{
     background: {PRIMARY};
-    color: #000000;
+    color: #000;
     padding: 12px;
 }}
 
@@ -80,9 +82,10 @@ tr:nth-child(even) td {{
     background: rgba(255,255,255,.11);
 }}
 
-.score, .score-box {{
+.score,
+.score-box {{
     background: {PRIMARY};
-    color: #000000;
+    color: #000;
     text-align: center;
     padding: 26px;
     font-size: 46px;
@@ -95,42 +98,50 @@ tr:nth-child(even) td {{
 .score-number {{
     font-size: 58px;
     font-weight: 700;
-    color: #000000;
+    color: #000;
 }}
 
 .score-label {{
     font-size: 20px;
-    color: #000000;
+    color: #000;
     margin-top: 8px;
 }}
 
 .content {{
     padding: 36px 45px 24px;
 }}
-.cta-box{
-    margin-top:50px;
-    background:rgba(255,255,255,.05);
-    border:2px solid #FF8A00;
-    border-radius:18px;
-    padding:30px;
-    text-align:center;
-}
 
-.whatsapp-btn{
-    display:inline-block;
-    margin-top:18px;
-    padding:14px 30px;
-    background:#25D366;
-    color:#fff;
-    text-decoration:none;
-    font-size:18px;
-    font-weight:bold;
-    border-radius:12px;
-}
+.cta-box {{
+    margin-top: 50px;
+    background: rgba(255,255,255,.05);
+    border: 2px solid {PRIMARY};
+    border-radius: 18px;
+    padding: 30px;
+    text-align: center;
+}}
 
-.whatsapp-btn:hover{
-    background:#1EBE5D;
-}
+.cta-box p {{
+    margin-top: 15px;
+    margin-bottom: 20px;
+}}
+
+.whatsapp-btn {{
+    display: inline-block;
+    margin-top: 18px;
+    padding: 14px 30px;
+    background: #25D366;
+    color: #FFFFFF;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 12px;
+    transition: .3s;
+}}
+
+.whatsapp-btn:hover {{
+    background: #1EBE5D;
+}}
+
 .footer {{
     margin-top: 35px;
     padding-top: 20px;
@@ -139,5 +150,32 @@ tr:nth-child(even) td {{
     color: {TEXT_MUTED};
     font-size: 14px;
 }}
+
+@page {{
+    size: A4;
+    margin: 0;
+}}
+
+@media print {{
+
+    html,
+    body {{
+        background: {DARK} !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }}
+
+    .cover,
+    .score-box,
+    .cta-box,
+    table,
+    th,
+    td {{
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }}
+
+}}
+
 </style>
 """
