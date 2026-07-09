@@ -497,9 +497,7 @@ def generate_media_plan(store_name, store_url, niche, budget, country):
 <div class="footer">
     تم إعداد هذا التقرير بواسطة شركة البط للحلول التسويقية والنمو الرقمي
 </div>
-            <div class="footer">
-                تم إعداد هذا التقرير بواسطة شركة البط للحلول التسويقية والنمو الرقمي
-            </div>
+            
         </div>
     </div>
     </body>

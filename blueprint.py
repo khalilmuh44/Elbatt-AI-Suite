@@ -360,9 +360,7 @@ def generate_blueprint(store_name, store_url, niche, budget, country, business_t
 <div class="footer">
     تم إعداد هذا التقرير بواسطة شركة البط للحلول التسويقية والنمو الرقمي
 </div>
-            <div class="footer">
-         تم إعداد هذا التقرير بواسطة شركة البط للحلول التسويقية والنمو الرقمي
-           </div>
+           
         </div>
     </div>
     </body>
