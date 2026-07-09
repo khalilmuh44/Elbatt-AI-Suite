@@ -1,9 +1,15 @@
-st.image(
-    "assets/hero.png",
-    use_container_width=True
+import streamlit as st
+from media_plan import generate_media_plan
+from blueprint import generate_blueprint
+
+st.set_page_config(
+    page_title="Elbatt AI Suite",
+    layout="wide"
 )
 
-col1, col2 = st.columns([1,6])
+st.image("assets/hero.png", use_container_width=True)
+
+col1, col2 = st.columns([1, 6])
 
 with col1:
     st.image("assets/logo.png", width=80)
