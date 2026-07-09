@@ -4,6 +4,7 @@ from openai import OpenAI
 import markdown
 from dotenv import load_dotenv
 from media_plan import fetch_store_page
+from styles.components import WHATSAPP_CTA
 from styles.report_style import REPORT_CSS
 load_dotenv()
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
@@ -330,7 +331,7 @@ def generate_blueprint(store_name, store_url, niche, budget, country, business_t
 #     .content {{
 #         padding:30px 45px 20px;
 #     }}
-
+      
 #     .footer {{
 #         margin-top:25px;
 #         padding-top:18px;
@@ -354,6 +355,11 @@ def generate_blueprint(store_name, store_url, niche, budget, country, business_t
         <div class="content">
             <div class="score">{final_score}/10</div>
             {report_html_body}
+            {WHATSAPP_CTA}
+
+<div class="footer">
+    تم إعداد هذا التقرير بواسطة شركة البط للحلول التسويقية والنمو الرقمي
+</div>
             <div class="footer">
          تم إعداد هذا التقرير بواسطة شركة البط للحلول التسويقية والنمو الرقمي
            </div>

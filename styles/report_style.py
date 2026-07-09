@@ -107,7 +107,30 @@ tr:nth-child(even) td {{
 .content {{
     padding: 36px 45px 24px;
 }}
+.cta-box{
+    margin-top:50px;
+    background:rgba(255,255,255,.05);
+    border:2px solid #FF8A00;
+    border-radius:18px;
+    padding:30px;
+    text-align:center;
+}
 
+.whatsapp-btn{
+    display:inline-block;
+    margin-top:18px;
+    padding:14px 30px;
+    background:#25D366;
+    color:#fff;
+    text-decoration:none;
+    font-size:18px;
+    font-weight:bold;
+    border-radius:12px;
+}
+
+.whatsapp-btn:hover{
+    background:#1EBE5D;
+}
 .footer {{
     margin-top: 35px;
     padding-top: 20px;

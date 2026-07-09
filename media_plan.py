@@ -8,6 +8,7 @@ from openai import OpenAI
 import markdown
 
 from dotenv import load_dotenv  
+from styles.components import WHATSAPP_CTA
 from styles.report_style import REPORT_CSS
 
 load_dotenv()  
@@ -491,7 +492,11 @@ def generate_media_plan(store_name, store_url, niche, budget, country):
             </div>
 
             {report_html_body}
+            {WHATSAPP_CTA}
 
+<div class="footer">
+    تم إعداد هذا التقرير بواسطة شركة البط للحلول التسويقية والنمو الرقمي
+</div>
             <div class="footer">
                 تم إعداد هذا التقرير بواسطة شركة البط للحلول التسويقية والنمو الرقمي
             </div>
