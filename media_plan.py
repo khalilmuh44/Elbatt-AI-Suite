@@ -8,7 +8,7 @@ from openai import OpenAI
 import markdown
 
 from dotenv import load_dotenv  
-
+from styles.report_style import REPORT_CSS
 
 load_dotenv()  
 
@@ -263,213 +263,217 @@ def generate_media_plan(store_name, store_url, niche, budget, country):
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <style>
-    :root {{
-        --primary: #0F75CA;
-        --secondary: #FE5500;
-        --accent: #FEC000;
-        --dark: #3B4757;
-        --white: #FFFFFF;
-        --soft-white: #F8FAFC;
-        --border: rgba(255,255,255,0.18);
-    }}
+    # <style>
+    # :root {{
+    #     --primary: #0F75CA;
+    #     --secondary: #FE5500;
+    #     --accent: #FEC000;
+    #     --dark: #3B4757;
+    #     --white: #FFFFFF;
+    #     --soft-white: #F8FAFC;
+    #     --border: rgba(255,255,255,0.18);
+    # }}
 
-    html {{
-        background: var(--dark);
-    }}
+    # html {{
+    #     background: var(--dark);
+    # }}
 
-    body {{
-        font-family: 'IBM Plex Sans Arabic', Tahoma, Arial, sans-serif;
-        direction: rtl;
-        background: var(--dark);
-        color: var(--white);
-        margin: 0;
-        padding: 0;
-    }}
+    # body {{
+    #     font-family: 'IBM Plex Sans Arabic', Tahoma, Arial, sans-serif;
+    #     direction: rtl;
+    #     background: var(--dark);
+    #     color: var(--white);
+    #     margin: 0;
+    #     padding: 0;
+    # }}
 
-    .report {{
-        width: 100%;
-        max-width: 1100px;
-        margin: 0 auto;
-        background: var(--dark);
-        color: var(--white);
-        border-radius: 0;
-        overflow: hidden;
-        box-shadow: none;
-    }}
+    # .report {{
+    #     width: 100%;
+    #     max-width: 1100px;
+    #     margin: 0 auto;
+    #     background: var(--dark);
+    #     color: var(--white);
+    #     border-radius: 0;
+    #     overflow: hidden;
+    #     box-shadow: none;
+    # }}
 
-    .cover {{
-        padding: 54px 50px 36px 50px;
-        background:
-            radial-gradient(circle at top left, rgba(254,192,0,0.16), transparent 30%),
-            linear-gradient(135deg, #3B4757, #2F3946);
-        color: var(--white);
-        border-bottom: 6px solid var(--secondary);
-    }}
+    # .cover {{
+    #     padding: 54px 50px 36px 50px;
+    #     background:
+    #         radial-gradient(circle at top left, rgba(254,192,0,0.16), transparent 30%),
+    #         linear-gradient(135deg, #3B4757, #2F3946);
+    #     color: var(--white);
+    #     border-bottom: 6px solid var(--secondary);
+    # }}
 
-    .logo {{
-        max-height: 82px;
-        max-width: 190px;
-        background: var(--white);
-        padding: 12px;
-        border-radius: 14px;
-        margin-bottom: 26px;
-    }}
+    # .logo {{
+    #     max-height: 82px;
+    #     max-width: 190px;
+    #     background: var(--white);
+    #     padding: 12px;
+    #     border-radius: 14px;
+    #     margin-bottom: 26px;
+    # }}
 
-    .cover h1 {{
-        margin: 0;
-        font-size: 38px;
-        line-height: 1.55;
-        color: var(--white);
-        border: none;
-        padding: 0;
-    }}
+    # .cover h1 {{
+    #     margin: 0;
+    #     font-size: 38px;
+    #     line-height: 1.55;
+    #     color: var(--white);
+    #     border: none;
+    #     padding: 0;
+    # }}
 
-    .cover p {{
-        margin-top: 14px;
-        font-size: 17px;
-        color: rgba(255,255,255,0.9);
-    }}
+    # .cover p {{
+    #     margin-top: 14px;
+    #     font-size: 17px;
+    #     color: rgba(255,255,255,0.9);
+    # }}
 
-    .content {{
-        padding: 45px;
-        background: var(--dark);
-    }}
+    # .content {{
+    #     padding: 45px;
+    #     background: var(--dark);
+    # }}
 
-    .score-box {{
-        background: var(--secondary);
-        color: #000000;
-        padding: 28px;
-        border-radius: 0;
-        text-align: center;
-        margin: 0 auto 42px auto;
-        max-width: 440px;
-        border: none;
-        box-shadow: 0 10px 28px rgba(0,0,0,0.18);
-    }}
+    # .score-box {{
+    #     background: var(--secondary);
+    #     color: #000000;
+    #     padding: 28px;
+    #     border-radius: 0;
+    #     text-align: center;
+    #     margin: 0 auto 42px auto;
+    #     max-width: 440px;
+    #     border: none;
+    #     box-shadow: 0 10px 28px rgba(0,0,0,0.18);
+    # }}
 
-    .score-number {{
-        font-size: 58px;
-        font-weight: 600;
-        color: #000000;
-        line-height: 1.1;
-    }}
+    # .score-number {{
+    #     font-size: 58px;
+    #     font-weight: 600;
+    #     color: #000000;
+    #     line-height: 1.1;
+    # }}
 
-    .score-label {{
-        font-size: 22px;
-        color: #000000;
-        margin-top: 8px;
-        font-weight: 700;
-    }}
+    # .score-label {{
+    #     font-size: 22px;
+    #     color: #000000;
+    #     margin-top: 8px;
+    #     font-weight: 700;
+    # }}
 
-    h1 {{
-        color: var(--white);
-        font-size: 34px;
-        padding-bottom: 18px;
-        border-bottom: 4px solid var(--accent);
-    }}
+    # h1 {{
+    #     color: var(--white);
+    #     font-size: 34px;
+    #     padding-bottom: 18px;
+    #     border-bottom: 4px solid var(--accent);
+    # }}
 
-    h2 {{
-        color: var(--accent);
-        margin-top: 42px;
-        font-size: 30px;
-        border-right: 7px solid var(--secondary);
-        padding-right: 14px;
-    }}
+    # h2 {{
+    #     color: var(--accent);
+    #     margin-top: 42px;
+    #     font-size: 30px;
+    #     border-right: 7px solid var(--secondary);
+    #     padding-right: 14px;
+    # }}
 
-    h3 {{
-        color: var(--white);
-        margin-top: 30px;
-        font-size: 23px;
-    }}
+    # h3 {{
+    #     color: var(--white);
+    #     margin-top: 30px;
+    #     font-size: 23px;
+    # }}
 
-    p, li {{
-        font-size: 18px;
-        line-height: 2;
-        color: var(--white);
-    }}
+    # p, li {{
+    #     font-size: 18px;
+    #     line-height: 2;
+    #     color: var(--white);
+    # }}
 
-    ul {{
-        padding-right: 28px;
-    }}
+    # ul {{
+    #     padding-right: 28px;
+    # }}
 
-    table {{
-        width: 100%;
-        border-collapse: collapse;
-        margin: 28px 0;
-        font-size: 16px;
-        overflow: hidden;
-        border-radius: 12px;
-    }}
+    # table {{
+    #     width: 100%;
+    #     border-collapse: collapse;
+    #     margin: 28px 0;
+    #     font-size: 16px;
+    #     overflow: hidden;
+    #     border-radius: 12px;
+    # }}
 
-    th {{
-        background: var(--primary);
-        color: var(--white);
-        padding: 14px;
-        border: 1px solid var(--primary);
-        font-weight: 700;
-    }}
+    # th {{
+    #     background: var(--primary);
+    #     color: var(--white);
+    #     padding: 14px;
+    #     border: 1px solid var(--primary);
+    #     font-weight: 700;
+    # }}
 
-    td {{
-        padding: 14px;
-        border: 1px solid var(--border);
-        background: rgba(255,255,255,0.06);
-        color: var(--white);
-    }}
+    # td {{
+    #     padding: 14px;
+    #     border: 1px solid var(--border);
+    #     background: rgba(255,255,255,0.06);
+    #     color: var(--white);
+    # }}
 
-    tr:nth-child(even) td {{
-        background: rgba(255,255,255,0.10);
-    }}
+    # tr:nth-child(even) td {{
+    #     background: rgba(255,255,255,0.10);
+    # }}
 
-    strong {{
-        color: var(--white);
-        font-weight: 700;
-    }}
+    # strong {{
+    #     color: var(--white);
+    #     font-weight: 700;
+    # }}
 
-    .footer {{
-        margin-top: 55px;
-        padding-top: 24px;
-        border-top: 1px solid var(--border);
-        text-align: center;
-        color: rgba(255,255,255,0.72);
-        font-size: 14px;
-    }}
+    # .footer {{
+    #     margin-top: 55px;
+    #     padding-top: 24px;
+    #     border-top: 1px solid var(--border);
+    #     text-align: center;
+    #     color: rgba(255,255,255,0.72);
+    #     font-size: 14px;
+    # }}
 
-    @page {{
-        size: A4;
-        margin: 0;
-    }}
+    # @page {{
+    #     size: A4;
+    #     margin: 0;
+    # }}
 
-    @media print {{
-        html, body {{
-            width: 100%;
-            margin: 0 !important;
-            padding: 0 !important;
-            background: var(--dark) !important;
-            -webkit-print-color-adjust: exact !important;
-            print-color-adjust: exact !important;
-        }}
+    # @media print {{
+    #     html, body {{
+    #         width: 100%;
+    #         margin: 0 !important;
+    #         padding: 0 !important;
+    #         background: var(--dark) !important;
+    #         -webkit-print-color-adjust: exact !important;
+    #         print-color-adjust: exact !important;
+    #     }}
 
-        .report {{
-            width: 100% !important;
-            max-width: none !important;
-            min-height: 100vh !important;
-            margin: 0 !important;
-            border-radius: 0 !important;
-            box-shadow: none !important;
-            background: var(--dark) !important;
-        }}
+    #     .report {{
+    #         width: 100% !important;
+    #         max-width: none !important;
+    #         min-height: 100vh !important;
+    #         margin: 0 !important;
+    #         border-radius: 0 !important;
+    #         box-shadow: none !important;
+    #         background: var(--dark) !important;
+    #     }}
 
-        .cover,
-        .content,
-        .score-box,
-        th,
-        td {{
-            -webkit-print-color-adjust: exact !important;
-            print-color-adjust: exact !important;
-        }}
-    }}
-    </style>
+    #     .cover,
+    #     .content,
+    #     .score-box,
+    #     th,
+    #     td {{
+    #         -webkit-print-color-adjust: exact !important;
+    #         print-color-adjust: exact !important;
+    #     }}
+    # }}
+    # </style>
+    
+    {REPORT_CSS}
+    
+    
     </head>
 
     <body>

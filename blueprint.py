@@ -4,7 +4,7 @@ from openai import OpenAI
 import markdown
 from dotenv import load_dotenv
 from media_plan import fetch_store_page
-
+from styles.report_style import REPORT_CSS
 load_dotenv()
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
@@ -244,104 +244,104 @@ def generate_blueprint(store_name, store_url, niche, budget, country, business_t
     <head>
     <meta charset="UTF-8">
     <title>Business Growth Blueprint - {store_name}</title>
-    <style>
-    html, body {{
-        margin:0;
-        padding:0;
-        font-family: Tahoma, Arial, sans-serif;
-        direction:rtl;
-        background:#061A45;
-        color:white;
-    }}
+#     <style>
+#     html, body {{
+#         margin:0;
+#         padding:0;
+#         font-family: Tahoma, Arial, sans-serif;
+#         direction:rtl;
+#         background:#061A45;
+#         color:white;
+#     }}
 
-    .report {{
-        max-width:1100px;
-        margin:auto;
-        background:#061A45;
-        padding-bottom:25px;
-    }}
+#     .report {{
+#         max-width:1100px;
+#         margin:auto;
+#         background:#061A45;
+#         padding-bottom:25px;
+#     }}
 
-    .cover {{
-        padding:42px 50px;
-        background:linear-gradient(135deg,#061A45,#0B255F);
-        border-bottom:5px solid #FF6A00;
-        text-align:center;
-    }}
+#     .cover {{
+#         padding:42px 50px;
+#         background:linear-gradient(135deg,#061A45,#0B255F);
+#         border-bottom:5px solid #FF6A00;
+#         text-align:center;
+#     }}
 
-    .logo {{
-        max-height:80px;
-        max-width:180px;
-        object-fit:contain;
-        background:white;
-        padding:12px;
-        border-radius:16px;
-        margin-bottom:20px;
-    }}
+#     .logo {{
+#         max-height:80px;
+#         max-width:180px;
+#         object-fit:contain;
+#         background:white;
+#         padding:12px;
+#         border-radius:16px;
+#         margin-bottom:20px;
+#     }}
 
-    h1 {{
-        font-size:36px;
-        color:white;
-        margin:0 0 12px;
-    }}
+#     h1 {{
+#         font-size:36px;
+#         color:white;
+#         margin:0 0 12px;
+#     }}
 
-    h2 {{
-        color:#FF6A00;
-        border-right:6px solid #FF6A00;
-        padding-right:14px;
-        margin-top:28px;
-        margin-bottom:14px;
-    }}
+#     h2 {{
+#         color:#FF6A00;
+#         border-right:6px solid #FF6A00;
+#         padding-right:14px;
+#         margin-top:28px;
+#         margin-bottom:14px;
+#     }}
 
-    p, li {{
-        font-size:17px;
-        line-height:1.75;
-    }}
+#     p, li {{
+#         font-size:17px;
+#         line-height:1.75;
+#     }}
 
-    table {{
-        width:100%;
-        border-collapse:collapse;
-        margin:16px 0;
-    }}
+#     table {{
+#         width:100%;
+#         border-collapse:collapse;
+#         margin:16px 0;
+#     }}
 
-    th {{
-        background:#FF6A00;
-        color:#061A45;
-        padding:10px;
-    }}
+#     th {{
+#         background:#FF6A00;
+#         color:#061A45;
+#         padding:10px;
+#     }}
 
-    td {{
-        background:rgba(255,255,255,.07);
-        border:1px solid rgba(255,255,255,.15);
-        padding:10px;
-    }}
+#     td {{
+#         background:rgba(255,255,255,.07);
+#         border:1px solid rgba(255,255,255,.15);
+#         padding:10px;
+#     }}
 
-    .score {{
-        background:#FF6A00;
-        color:#061A45;
-        text-align:center;
-        padding:24px;
-        font-size:46px;
-        font-weight:bold;
-        margin:30px auto;
-        max-width:350px;
-        border-radius:18px;
-    }}
+#     .score {{
+#         background:#FF6A00;
+#         color:#061A45;
+#         text-align:center;
+#         padding:24px;
+#         font-size:46px;
+#         font-weight:bold;
+#         margin:30px auto;
+#         max-width:350px;
+#         border-radius:18px;
+#     }}
 
-    .content {{
-        padding:30px 45px 20px;
-    }}
+#     .content {{
+#         padding:30px 45px 20px;
+#     }}
 
-    .footer {{
-        margin-top:25px;
-        padding-top:18px;
-        border-top:1px solid rgba(255,255,255,.18);
-        text-align:center;
-        color:rgba(255,255,255,.75);
-        font-size:14px;
-    }}
-</style>
+#     .footer {{
+#         margin-top:25px;
+#         padding-top:18px;
+#         border-top:1px solid rgba(255,255,255,.18);
+#         text-align:center;
+#         color:rgba(255,255,255,.75);
+#         font-size:14px;
+#     }}
+# </style>
     
-
+{REPORT_CSS}
 
     </head>
     <body>
