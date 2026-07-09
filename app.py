@@ -7,7 +7,7 @@ st.set_page_config(
     layout="wide"
 )
 
-st.title("🚀 Ameen AI Suite")
+st.title("🚀 Elbatt AI Suite")
 st.subheader("AI Growth Reports Generator")
 
 if "service" not in st.session_state:
