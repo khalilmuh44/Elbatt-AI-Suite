@@ -140,7 +140,7 @@ def generate_sales_funnel(
 
     if report_theme is None:
         report_theme = {
-            "agency_name": "Ameen",
+            "agency_name": "البط",
             "bg_color": "#3B4757",
             "text_color": "#FFFFFF",
             "secondary_text_color": "#FEC000",
