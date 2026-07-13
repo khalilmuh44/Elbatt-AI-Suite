@@ -29,8 +29,8 @@ st.set_page_config(
 
 # =========================================================
 # Application Style
-# تطبيق CSS الخاص بواجهة التطبيق
-# للتعديل على شكل الواجهة:
+# تصميم واجهة التطبيق
+# للتعديل على الألوان أو التنسيق:
 # styles/app_style.py
 # =========================================================
 
@@ -41,13 +41,87 @@ st.markdown(
 
 
 # =========================================================
+# WhatsApp Country Codes
+# الدول المتاحة لاختيار مفتاح رقم مسؤول المبيعات
+# يمكن إضافة دول جديدة لاحقًا بسهولة
+# =========================================================
+
+WHATSAPP_COUNTRY_CODES = {
+    "Saudi Arabia (+966)": "966",
+    "Egypt (+20)": "20",
+    "United Arab Emirates (+971)": "971",
+    "Kuwait (+965)": "965",
+    "Qatar (+974)": "974",
+    "Bahrain (+973)": "973",
+    "Oman (+968)": "968"
+}
+
+
+# =========================================================
+# WhatsApp Number Normalization
+# تحويل رقم الهاتف إلى الصيغة المناسبة لرابط WhatsApp
+# =========================================================
+
+def normalize_whatsapp_number(
+    phone_number: str,
+    country_code: str
+) -> str:
+    """
+    Convert a local or international phone number
+    into digits-only international WhatsApp format.
+
+    Examples:
+
+    Saudi Arabia:
+    0508976543 -> 966508976543
+
+    Egypt:
+    01095351127 -> 201095351127
+
+    International formats are also accepted:
+    +966 50 897 6543 -> 966508976543
+    00201095351127 -> 201095351127
+    """
+
+    # حذف كل شيء عدا الأرقام
+    digits = re.sub(
+        r"\D",
+        "",
+        phone_number or ""
+    )
+
+    if not digits:
+        return ""
+
+    # تحويل صيغة 00 الدولية:
+    # 00966... تصبح 966...
+    if digits.startswith("00"):
+        digits = digits[2:]
+
+    # لو المستخدم كتب الرقم كاملًا بمفتاح الدولة المختار
+    # نتركه كما هو
+    if digits.startswith(country_code):
+        return digits
+
+    # لو المستخدم كتب رقمًا محليًا يبدأ بصفر
+    # نحذف الصفر المحلي ثم نضيف مفتاح الدولة
+    local_number = digits.lstrip("0")
+
+    if not local_number:
+        return ""
+
+    return f"{country_code}{local_number}"
+
+
+# =========================================================
 # Header
-# اللوجو واسم التطبيق
+# لوجو التطبيق والعنوان الرئيسي
 # =========================================================
 
 logo_left, logo_center, logo_right = st.columns([4, 1, 4])
 
 with logo_center:
+
     st.image(
         "assets/logo.png",
         use_container_width=True
@@ -68,7 +142,7 @@ st.markdown(
 
 # =========================================================
 # Sidebar Navigation
-# اختيار الموديول وإعدادات التقرير
+# اختيار نوع التقرير ولغة التقرير
 # =========================================================
 
 st.sidebar.title("⚙️ Report Settings")
@@ -82,8 +156,6 @@ selected_module = st.sidebar.radio(
     ]
 )
 
-
-# ربط اسم الموديول الظاهر بالقيمة المستخدمة داخل الكود
 module_map = {
     "📈 Media Plan": "media",
     "🚀 Business Growth Blueprint": "blueprint",
@@ -92,13 +164,14 @@ module_map = {
 
 service = module_map[selected_module]
 
-
 st.sidebar.divider()
 
 
-# لغة التقرير
-# حاليًا يتم تمريرها إلى Sales Funnel.
-# لاحقًا نربطها بباقي الموديولات.
+# =========================================================
+# Report Language
+# تحديد لغة التقرير
+# =========================================================
+
 report_language = st.sidebar.selectbox(
     "Report Language / لغة التقرير",
     [
@@ -109,20 +182,69 @@ report_language = st.sidebar.selectbox(
 
 
 # =========================================================
+# Report Contact Settings
+# بيانات مسؤول المبيعات الذي سيظهر في نهاية التقرير
+# =========================================================
+
+st.sidebar.divider()
+
+st.sidebar.subheader(
+    "📞 Report Contact"
+)
+
+sales_contact_name = st.sidebar.text_input(
+    "Sales Representative Name",
+    placeholder="Example: Khalil"
+)
+
+selected_phone_country = st.sidebar.selectbox(
+    "WhatsApp Number Country",
+    list(WHATSAPP_COUNTRY_CODES.keys()),
+    index=0
+)
+
+sales_whatsapp_number = st.sidebar.text_input(
+    "WhatsApp Number",
+    placeholder="Example: 0501234567"
+)
+
+st.sidebar.caption(
+    "اكتب الرقم بصيغته المحلية أو الدولية، "
+    "وسيتم تجهيزه تلقائيًا لرابط WhatsApp."
+)
+
+# الحصول على مفتاح الدولة المختارة
+selected_country_code = WHATSAPP_COUNTRY_CODES[
+    selected_phone_country
+]
+
+# تجهيز رقم واتساب النهائي
+clean_sales_whatsapp = normalize_whatsapp_number(
+    phone_number=sales_whatsapp_number,
+    country_code=selected_country_code
+)
+
+
+# =========================================================
 # Active Module Message
-# الرسالة التي توضح نوع التقرير المختار
+# توضيح نوع التقرير المختار
 # =========================================================
 
 if service == "media":
-    st.info("📈 You are generating an AI Media Plan")
+
+    st.info(
+        "📈 You are generating an AI Media Plan"
+    )
 
 elif service == "blueprint":
+
     st.info(
         "🚀 You are generating a full "
         "Business Growth Blueprint"
     )
 
 elif service == "sales_funnel":
+
     st.info(
         "💰 You are generating a Sales Funnel Blueprint"
     )
@@ -130,7 +252,7 @@ elif service == "sales_funnel":
 
 # =========================================================
 # Shared Business Inputs
-# البيانات المشتركة بين جميع الموديولات
+# البيانات الأساسية المشتركة بين الموديولات الحالية
 # =========================================================
 
 st.markdown(
@@ -138,21 +260,28 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-form_col1, form_col2 = st.columns(2)
 
+# ---------------------------------------------------------
+# تقسيم بيانات المتجر إلى 3 أعمدة متساوية
+# ---------------------------------------------------------
 
-# العمود الأول
-with form_col1:
+business_col1, business_col2, business_col3 = st.columns(3)
+
+with business_col1:
 
     store_name = st.text_input(
         "Business / Store Name",
         placeholder="Example: Elbatt Store"
     )
 
+with business_col2:
+
     store_url = st.text_input(
         "Website / Store URL",
         placeholder="https://example.com"
     )
+
+with business_col3:
 
     niche = st.text_input(
         "Business Niche",
@@ -162,29 +291,58 @@ with form_col1:
     )
 
 
-# العمود الثاني
-with form_col2:
+# =========================================================
+# Shared Fixed Values
+# المشروع مخصص للسوق السعودي فقط
+# =========================================================
 
-    budget = st.text_input(
-        "Monthly Budget",
-        value="10000 SAR",
-        placeholder="Example: 10000 SAR"
-    )
+country = "Saudi Arabia"
 
-    country = st.selectbox(
-        "Target Country",
-        [
-            "Saudi Arabia",
-            "UAE",
-            "Qatar",
-            "Kuwait"
-        ]
-    )
+# الميزانية تستخدم فقط في Media Plan وBlueprint
+# لا تستخدم نهائيًا داخل Sales Funnel
+budget = None
+
+
+# =========================================================
+# Budget Input
+# يظهر فقط عند اختيار Media Plan أو Blueprint
+# =========================================================
+
+if service in ["media", "blueprint"]:
+
+    budget_col1, budget_col2 = st.columns([1, 2])
+
+    with budget_col1:
+
+        budget = st.text_input(
+            "Monthly Budget",
+            value="10000 SAR",
+            placeholder="Example: 10000 SAR"
+        )
+
+    with budget_col2:
+
+        st.markdown(
+            """
+            <div style="
+                padding: 17px 20px;
+                margin-top: 28px;
+                border-radius: 14px;
+                background: rgba(255,255,255,.03);
+                border: 1px solid rgba(255,255,255,.08);
+                line-height: 1.8;
+            ">
+                <strong>Target Market</strong><br>
+                Kingdom of Saudi Arabia
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
 
 
 # =========================================================
 # Default Variables
-# قيم افتراضية للمدخلات الخاصة بالموديولات
+# قيم افتراضية للحقول الخاصة بكل موديول
 # =========================================================
 
 # Business Blueprint variables
@@ -199,7 +357,7 @@ winning_channels = []
 
 # =========================================================
 # Business Growth Blueprint Inputs
-# تظهر فقط عند اختيار Business Growth Blueprint
+# تظهر فقط عند اختيار Blueprint
 # =========================================================
 
 if service == "blueprint":
@@ -262,6 +420,7 @@ if service == "blueprint":
 # =========================================================
 # Sales Funnel Inputs
 # تظهر فقط عند اختيار Sales Funnel
+# الميزانية غير موجودة في هذا الموديول
 # =========================================================
 
 if service == "sales_funnel":
@@ -273,29 +432,47 @@ if service == "sales_funnel":
         unsafe_allow_html=True
     )
 
-    sales_biggest_challenge = st.text_area(
-        "Biggest Growth Challenge",
-        placeholder=(
-            "Example: We have traffic but low sales, "
-            "high CPA, or no sales yet..."
-        ),
-        height=140
-    )
+    funnel_col1, funnel_col2 = st.columns(2)
 
-    winning_channels = st.multiselect(
-        "Current Winning Channels",
-        [
-            "No Sales Yet",
-            "Google Ads",
-            "Snapchat Ads",
-            "TikTok Ads",
-            "Instagram / Meta Ads",
-            "SEO",
-            "Influencers",
-            "Email / WhatsApp",
-            "Other"
-        ]
-    )
+    # -----------------------------------------------------
+    # العمود الأول
+    # أكبر تحدٍ يواجه المتجر
+    # -----------------------------------------------------
+
+    with funnel_col1:
+
+        sales_biggest_challenge = st.text_area(
+            "Biggest Growth Challenge",
+            placeholder=(
+                "Example: We have traffic but low sales, "
+                "customers abandon the cart, or repeat "
+                "purchases are low..."
+            ),
+            height=155
+        )
+
+    # -----------------------------------------------------
+    # العمود الثاني
+    # القنوات التسويقية المستخدمة حاليًا
+    # -----------------------------------------------------
+
+    with funnel_col2:
+
+        winning_channels = st.multiselect(
+            "Current Marketing Channels",
+            [
+                "No Marketing Yet",
+                "Google Ads",
+                "Snapchat Ads",
+                "TikTok Ads",
+                "Instagram / Meta Ads",
+                "SEO",
+                "Influencers",
+                "Email Marketing",
+                "WhatsApp Marketing",
+                "SMS Marketing"
+            ]
+        )
 
 
 # =========================================================
@@ -310,38 +487,8 @@ generate = st.button(
 
 
 # =========================================================
-# Budget Cleaning Function
-# تحويل الميزانية من نص مثل:
-# 10,000 SAR
-# إلى رقم:
-# 10000
-# =========================================================
-
-def parse_budget(budget_text):
-    """
-    Convert a budget string into an integer.
-
-    Examples:
-    10000 SAR -> 10000
-    10,000 -> 10000
-    SAR 15000 -> 15000
-    """
-
-    cleaned_budget = re.sub(
-        r"[^0-9.]",
-        "",
-        str(budget_text)
-    )
-
-    if not cleaned_budget:
-        raise ValueError("Invalid budget")
-
-    return int(float(cleaned_budget))
-
-
-# =========================================================
 # Report Generation
-# تشغيل الموديول المختار وإنشاء التقرير
+# التحقق من المدخلات وتشغيل الموديول المختار
 # =========================================================
 
 if generate:
@@ -352,21 +499,65 @@ if generate:
     # -----------------------------------------------------
 
     if not store_name.strip():
+
         st.error(
             "Please enter the Business / Store Name."
         )
 
     elif not store_url.strip():
+
         st.error(
             "Please enter the Website / Store URL."
         )
 
     elif not niche.strip():
+
         st.error(
             "Please enter the Business Niche."
         )
 
-    elif not budget.strip():
+
+    # -----------------------------------------------------
+    # Report Contact Validation
+    # التحقق من بيانات مسؤول المبيعات
+    # -----------------------------------------------------
+
+    elif not sales_whatsapp_number.strip():
+
+        st.error(
+            "Please enter the WhatsApp number "
+            "that should appear in the report."
+        )
+
+    elif not clean_sales_whatsapp:
+
+        st.error(
+            "Please enter a valid WhatsApp number."
+        )
+
+    elif not (
+        8 <= len(clean_sales_whatsapp) <= 15
+    ):
+
+        st.error(
+            "The WhatsApp number does not appear valid. "
+            "Please check the selected country and number."
+        )
+
+
+    # -----------------------------------------------------
+    # Budget Validation
+    # الميزانية مطلوبة فقط في Media Plan وBlueprint
+    # -----------------------------------------------------
+
+    elif (
+        service in ["media", "blueprint"]
+        and (
+            budget is None
+            or not budget.strip()
+        )
+    ):
+
         st.error(
             "Please enter the Monthly Budget."
         )
@@ -380,6 +571,7 @@ if generate:
         service == "blueprint"
         and not current_problem
     ):
+
         st.error(
             "Please describe the current main problem."
         )
@@ -388,6 +580,7 @@ if generate:
         service == "blueprint"
         and not focus_areas
     ):
+
         st.error(
             "Please select at least one focus area."
         )
@@ -401,6 +594,7 @@ if generate:
         service == "sales_funnel"
         and not sales_biggest_challenge
     ):
+
         st.error(
             "Please describe the biggest growth challenge."
         )
@@ -472,25 +666,26 @@ if generate:
 
                 # =========================================
                 # Sales Funnel Module
+                # لا يستخدم أو يستقبل أي ميزانية
+                # يتم إرسال بيانات مسؤول المبيعات
                 # =========================================
 
                 elif service == "sales_funnel":
-
-                    monthly_budget = parse_budget(
-                        budget
-                    )
 
                     html_report, markdown_report = (
                         generate_sales_funnel(
                             store_name=store_name.strip(),
                             store_url=store_url.strip(),
                             store_category=niche.strip(),
-                            monthly_budget=monthly_budget,
                             biggest_challenge=(
                                 sales_biggest_challenge.strip()
                             ),
                             winning_channels=winning_channels,
-                            report_language=report_language
+                            report_language=report_language,
+                            whatsapp_number=clean_sales_whatsapp,
+                            sales_contact_name=(
+                                sales_contact_name.strip()
+                            )
                         )
                     )
 
@@ -505,9 +700,11 @@ if generate:
                 # =========================================
 
                 else:
+
                     st.error(
                         "Invalid report service selected."
                     )
+
                     st.stop()
 
 
@@ -531,7 +728,10 @@ if generate:
             )
 
 
+            # -------------------------------------------------
             # التقرير المنسق HTML
+            # -------------------------------------------------
+
             with formatted_tab:
 
                 st.components.v1.html(
@@ -541,7 +741,10 @@ if generate:
                 )
 
 
+            # -------------------------------------------------
             # التقرير الخام Markdown
+            # -------------------------------------------------
+
             with markdown_tab:
 
                 st.markdown(
@@ -554,7 +757,10 @@ if generate:
                 )
 
 
+            # -------------------------------------------------
             # تحميل التقرير
+            # -------------------------------------------------
+
             with download_tab:
 
                 st.download_button(
@@ -564,18 +770,6 @@ if generate:
                     mime="text/html",
                     use_container_width=True
                 )
-
-
-        # -----------------------------------------------------
-        # Invalid Budget Error
-        # -----------------------------------------------------
-
-        except ValueError:
-
-            st.error(
-                "Monthly Budget must contain "
-                "a valid number. Example: 10000 SAR"
-            )
 
 
         # -----------------------------------------------------
