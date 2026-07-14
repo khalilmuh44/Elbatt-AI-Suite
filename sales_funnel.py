@@ -488,6 +488,45 @@ def generate_sales_funnel(
             "nl2br"
         ]
     )
+    
+    # =========================================================
+# Print Page Breaks
+# إجبار الأقسام الطويلة على البدء في صفحة جديدة
+# =========================================================
+
+    report_soup = BeautifulSoup(
+        report_html_body,
+        "html.parser"
+    )
+
+    for heading in report_soup.find_all("h2"):
+
+        heading_text = heading.get_text(
+            " ",
+            strip=True
+        )
+
+        # القسم الرابع بالعربية أو الإنجليزية
+        if (
+            "خريطة رحلة العميل" in heading_text
+            or "Customer Journey Map" in heading_text
+        ):
+            current_classes = heading.get(
+                "class",
+                []
+            )
+
+            heading["class"] = (
+                current_classes
+                + ["start-new-page"]
+            )
+
+    report_html_body = str(report_soup)
+
+
+
+
+
 
 
     # تغليف الجداول لتكون Responsive
