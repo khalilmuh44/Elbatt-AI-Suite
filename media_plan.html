@@ -220,7 +220,17 @@
     
 <style>
 
-html, body {
+/* =======================================================
+   Global Document Settings
+   الإعدادات العامة للتقرير
+   ======================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
     margin: 0;
     padding: 0;
     font-family: Tahoma, Arial, sans-serif;
@@ -229,46 +239,88 @@ html, body {
     color: #FFFFFF;
 }
 
+body {
+    overflow-x: hidden;
+}
+
 .report {
+    width: 100%;
     max-width: 1100px;
-    margin: auto;
+    margin: 0 auto;
     background: #121821;
     color: #FFFFFF;
 }
 
+
+/* =======================================================
+   Cover
+   غلاف التقرير
+   ======================================================= */
+
 .cover {
     padding: 46px 50px;
-    background: linear-gradient(135deg, #121821, #1B2430);
+    background: linear-gradient(
+        135deg,
+        #121821,
+        #1B2430
+    );
     border-bottom: 6px solid #FF8A00;
     text-align: center;
 }
 
 .logo {
-    max-height: 90px;
+    display: block;
+    width: auto;
+    height: auto;
     max-width: 190px;
+    max-height: 90px;
     object-fit: contain;
     background: #FFFFFF;
     padding: 12px;
     border-radius: 18px;
-    margin-bottom: 22px;
+    margin: 0 auto 22px;
 }
 
+
+/* =======================================================
+   Headings
+   العناوين
+   ======================================================= */
+
 h1 {
-    font-size: 36px;
-    color: #FFFFFF;
     margin: 0 0 12px;
+    color: #FFFFFF;
+    font-size: 36px;
+    line-height: 1.35;
 }
 
 h2 {
-    color: #FF8A00;
-    border-right: 6px solid #FF8A00;
+    margin-top: 36px;
+    margin-bottom: 18px;
     padding-right: 14px;
-    margin-top: 32px;
+    border-right: 6px solid #FF8A00;
+    color: #FF8A00;
+    line-height: 1.45;
 }
 
 h3 {
+    margin-top: 26px;
+    margin-bottom: 12px;
     color: #F5C542;
+    line-height: 1.5;
 }
+
+h4 {
+    margin-top: 22px;
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+
+/* =======================================================
+   Text
+   النصوص والقوائم
+   ======================================================= */
 
 p,
 li {
@@ -276,64 +328,153 @@ li {
     line-height: 1.85;
 }
 
+p {
+    margin-top: 10px;
+    margin-bottom: 14px;
+}
+
+ul,
+ol {
+    padding-right: 28px;
+    padding-left: 0;
+}
+
+li {
+    margin-bottom: 7px;
+}
+
+strong {
+    font-weight: 700;
+}
+
+
+/* =======================================================
+   Report Content
+   محتوى التقرير
+   ======================================================= */
+
+.content {
+    padding: 36px 45px 24px;
+}
+
+
+/* =======================================================
+   Tables
+   الجداول
+   ======================================================= */
+
+.table-wrapper {
+    width: 100%;
+    margin: 22px 0;
+    overflow-x: auto;
+    overflow-y: visible;
+}
+
 table {
     width: 100%;
+    margin: 0;
     border-collapse: collapse;
-    margin: 22px 0;
+    border-spacing: 0;
+    table-layout: auto;
     font-size: 16px;
 }
 
+thead {
+    display: table-header-group;
+}
+
+tbody {
+    display: table-row-group;
+}
+
+tfoot {
+    display: table-footer-group;
+}
+
+tr {
+    page-break-inside: avoid;
+    break-inside: avoid;
+}
+
 th {
+    padding: 12px 10px;
+    border: 1px solid rgba(255,255,255,0.16);
     background: #FF8A00;
-    color: #000;
-    padding: 12px;
+    color: #000000;
+    text-align: center;
+    vertical-align: middle;
+    font-weight: 700;
+    line-height: 1.45;
+    overflow-wrap: anywhere;
+    word-break: normal;
 }
 
 td {
-    background: rgba(255,255,255,.07);
+    padding: 12px 10px;
     border: 1px solid rgba(255,255,255,0.16);
-    padding: 12px;
+    background: rgba(255,255,255,.07);
+    color: #FFFFFF;
+    text-align: right;
+    vertical-align: middle;
+    line-height: 1.55;
+    overflow-wrap: anywhere;
+    word-break: normal;
 }
 
 tr:nth-child(even) td {
     background: rgba(255,255,255,.11);
 }
 
+
+/* =======================================================
+   Score Boxes
+   صناديق التقييم
+   ======================================================= */
+
 .score,
 .score-box {
-    background: #FF8A00;
-    color: #000;
-    text-align: center;
+    max-width: 380px;
+    margin: 30px auto;
     padding: 26px;
+    border-radius: 18px;
+    background: #FF8A00;
+    color: #000000;
+    text-align: center;
     font-size: 46px;
     font-weight: bold;
-    margin: 30px auto;
-    max-width: 380px;
-    border-radius: 18px;
 }
 
 .score-number {
+    color: #000000;
     font-size: 58px;
     font-weight: 700;
-    color: #000;
 }
 
 .score-label {
-    font-size: 20px;
-    color: #000;
     margin-top: 8px;
+    color: #000000;
+    font-size: 20px;
 }
 
-.content {
-    padding: 36px 45px 24px;
-}
+
+/* =======================================================
+   WhatsApp CTA
+   صندوق التواصل
+   ======================================================= */
 
 .cta-box {
     margin-top: 50px;
-    background: rgba(255,255,255,.05);
+    padding: 30px;
     border: 2px solid #FF8A00;
     border-radius: 18px;
-    padding: 30px;
+    background: rgba(255,255,255,.05);
+    text-align: center;
+}
+
+.cta-box h2 {
+    margin-top: 0;
+    padding-right: 0;
+    border-right: 0;
     text-align: center;
 }
 
@@ -346,12 +487,12 @@ tr:nth-child(even) td {
     display: inline-block;
     margin-top: 18px;
     padding: 14px 30px;
+    border-radius: 12px;
     background: #25D366;
     color: #FFFFFF;
     text-decoration: none;
     font-size: 18px;
     font-weight: bold;
-    border-radius: 12px;
     transition: .3s;
 }
 
@@ -359,38 +500,309 @@ tr:nth-child(even) td {
     background: #1EBE5D;
 }
 
+
+/* =======================================================
+   Footer
+   تذييل التقرير
+   ======================================================= */
+
 .footer {
     margin-top: 35px;
     padding-top: 20px;
     border-top: 1px solid rgba(255,255,255,0.16);
-    text-align: center;
     color: #B8C0CC;
+    text-align: center;
     font-size: 14px;
 }
 
+
+/* =======================================================
+   A4 Page Settings
+   إعداد صفحة PDF
+   ======================================================= */
+
 @page {
-    size: A4;
-    margin: 0;
+    size: A4 portrait;
+    margin: 12mm 10mm 14mm;
 }
+
+
+/* =======================================================
+   Print Styles
+   تنسيقات الطباعة من Chrome إلى PDF
+   ======================================================= */
 
 @media print {
 
     html,
     body {
+        width: 100%;
+        min-height: 100%;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: visible !important;
         background: #121821 !important;
+        color: #FFFFFF !important;
+
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
     }
 
-    .cover,
-    .score-box,
-    .cta-box,
-    table,
-    th,
-    td {
+    .report {
+        width: 100% !important;
+        max-width: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: visible !important;
+        background: #121821 !important;
+    }
+
+    .content {
+        padding: 9mm 8mm 8mm !important;
+        overflow: visible !important;
+    }
+
+
+    /* ===================================================
+       Cover Print Settings
+       تنسيق الغلاف في الطباعة
+       =================================================== */
+
+    .cover {
+        padding: 18mm 10mm !important;
+        background: linear-gradient(
+            135deg,
+            #121821,
+            #1B2430
+        ) !important;
+
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
     }
+
+    .logo {
+        max-width: 170px !important;
+        max-height: 72px !important;
+    }
+
+    h1 {
+        font-size: 30px !important;
+    }
+
+
+    /* ===================================================
+       Heading Page-Break Protection
+       منع ظهور عنوان القسم منفصلًا عن محتواه
+       =================================================== */
+
+    h2 {
+        font-size: 23px !important;
+
+        page-break-inside: avoid !important;
+        break-inside: avoid-page !important;
+
+        page-break-after: avoid !important;
+        break-after: avoid-page !important;
+    }
+
+    h3,
+    h4 {
+        page-break-inside: avoid !important;
+        break-inside: avoid-page !important;
+
+        page-break-after: avoid !important;
+        break-after: avoid-page !important;
+    }
+
+    /*
+    ربط العنوان بأول فقرة أو قائمة أو جدول بعده.
+    يمنع ظهور عنوان القسم وحده في نهاية الصفحة.
+    */
+
+    h2 + p,
+    h2 + ul,
+    h2 + ol,
+    h2 + .table-wrapper,
+    h2 + table,
+    h3 + p,
+    h3 + ul,
+    h3 + ol,
+    h3 + .table-wrapper,
+    h3 + table {
+        page-break-before: avoid !important;
+        break-before: avoid-page !important;
+    }
+
+    /*
+    منع انفصال الفقرة الأولى بعد عنوان القسم.
+    */
+
+    h2 + p,
+    h3 + p {
+        page-break-inside: avoid !important;
+        break-inside: avoid-page !important;
+    }
+
+
+    /* ===================================================
+       Text Print Settings
+       إعدادات النصوص في الطباعة
+       =================================================== */
+
+    p,
+    li {
+        font-size: 13.5px !important;
+        line-height: 1.7 !important;
+        orphans: 3;
+        widows: 3;
+    }
+
+
+    /* ===================================================
+       Table Print Settings
+       إعدادات الجداول في الطباعة
+       =================================================== */
+
+    /*
+    لا نمنع الجدول الطويل بالكامل من الانقسام؛
+    لأن بعض الجداول أطول من صفحة A4.
+
+    نسمح للجدول بالاستمرار في الصفحة التالية،
+    مع منع انقسام الصف الواحد وتكرار رأس الجدول.
+    */
+
+    .table-wrapper {
+        display: block !important;
+        width: 100% !important;
+        margin: 14px 0 20px !important;
+        overflow: visible !important;
+
+        page-break-inside: auto !important;
+        break-inside: auto !important;
+    }
+
+    /*
+    إذا جاء الجدول مباشرة بعد العنوان،
+    احتفظ بالعنوان مع بداية الجدول قدر الإمكان.
+    */
+
+    h2 + .table-wrapper,
+    h3 + .table-wrapper {
+        page-break-before: avoid !important;
+        break-before: avoid-page !important;
+    }
+
+    table {
+        width: 100% !important;
+        margin: 0 !important;
+        table-layout: auto !important;
+        font-size: 12px !important;
+
+        page-break-inside: auto !important;
+        break-inside: auto !important;
+
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    /*
+    تكرار رأس الجدول في كل صفحة جديدة.
+    */
+
+    thead {
+        display: table-header-group !important;
+    }
+
+    tbody {
+        display: table-row-group !important;
+    }
+
+    tfoot {
+        display: table-footer-group !important;
+    }
+
+    /*
+    منع انقسام الصف الواحد بين صفحتين.
+    */
+
+    tr {
+        page-break-inside: avoid !important;
+        break-inside: avoid-page !important;
+    }
+
+    th,
+    td {
+        padding: 7px 6px !important;
+        font-size: 12px !important;
+        line-height: 1.4 !important;
+        overflow-wrap: anywhere !important;
+        word-break: normal !important;
+
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+
+    /* ===================================================
+       Component Page-Break Protection
+       منع تقسيم المكونات المهمة
+       =================================================== */
+
+    .score,
+    .score-box,
+    .cta-box,
+    .footer {
+        page-break-inside: avoid !important;
+        break-inside: avoid-page !important;
+
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    .score,
+    .score-box {
+        margin: 20px auto !important;
+        padding: 18px !important;
+    }
+
+    .cta-box {
+        margin-top: 28px !important;
+        padding: 22px !important;
+    }
+
+    .whatsapp-btn {
+        background: #25D366 !important;
+        color: #FFFFFF !important;
+
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+
+    /* ===================================================
+       Link Print Settings
+       منع ظهور رابط الزر كنص في PDF
+       =================================================== */
+
+    a[href]::after {
+        content: none !important;
+    }
+
+
+    /* ===================================================
+       Hidden Print Elements
+       إخفاء العناصر غير المطلوبة في PDF
+       =================================================== */
+
+    button,
+    .no-print {
+        display: none !important;
+    }
+
+
+    .start-new-page {
+    page-break-before: always !important;
+    break-before: page !important;
 
 }
 
@@ -416,110 +828,97 @@ tr:nth-child(even) td {
 
             <h1>الخطة التسويقية لمتجر نحلة</h1>
 <h2>1. الملخص التنفيذي</h2>
-<p>متجر نحلة يتميز بتقديم منتجات العسل ومشتقاته بجودة عالية مع ضمان ذهبي وخبرة تتجاوز 25 عامًا. الهدف من هذه الخطة هو تعزيز الوعي بالعلامة التجارية وزيادة المبيعات من خلال استراتيجيات إعلانية فعالة.</p>
+<p>متجر نحلة متخصص في بيع العسل ومشتقاته، ويتميز بخبرة تزيد عن 25 عامًا في هذا المجال. يقدم المتجر منتجات مفحوصة مخبريًا تتماشى مع المواصفات القياسية السعودية، مما يعزز الثقة والمصداقية لدى العملاء. الهدف من هذه الخطة هو تحسين تجربة المستخدم وزيادة المبيعات من خلال استراتيجيات تسويقية فعالة.</p>
 <h2>2. ملاحظاتنا على تجربة المتجر</h2>
 <ul>
-<li><strong>التنقل والوضوح</strong>: الموقع منظم بشكل جيد، ولكن يمكن تحسين وضوح بعض الروابط والعروض.</li>
-<li><strong>التفاعل مع العملاء</strong>: يوجد تعليقات إيجابية من العملاء، مما يعزز الثقة.</li>
+<li><strong>التنقل والواجهة</strong>: الموقع سهل الاستخدام، لكن يمكن تحسين وضوح بعض الروابط والخيارات لتسهيل الوصول إلى المنتجات.</li>
+<li><strong>السرعة والأداء</strong>: الأداء العام للموقع جيد، لكن تحسين سرعة التحميل يمكن أن يعزز تجربة المستخدم.</li>
 </ul>
 <h2>3. فرص تحسين معدل التحويل</h2>
 <ul>
-<li><strong>تحسين صفحات المنتجات</strong>: إضافة المزيد من الصور والوصف التفصيلي لكل منتج.</li>
-<li><strong>تسليط الضوء على العروض</strong>: التأكيد على العروض الخاصة مثل عروض رمضان بشكل أوضح.</li>
+<li><strong>وضوح العروض</strong>: يمكن تحسين عرض العروض الخاصة والخصومات بشكل أكثر وضوحًا على الصفحة الرئيسية.</li>
+<li><strong>التقييمات والمراجعات</strong>: إبراز تقييمات العملاء بشكل أوضح يمكن أن يزيد من الثقة ويحفز المشتريات.</li>
 </ul>
 <h2>4. القنوات الإعلانية المناسبة</h2>
-<table>
-<thead>
-<tr>
-<th>القناة</th>
-<th>مناسبة؟</th>
-<th>السبب</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Instagram</td>
-<td>نعم</td>
-<td>منصة مرئية مثالية لعرض منتجات العسل</td>
-</tr>
-<tr>
-<td>Google Ads</td>
-<td>نعم</td>
-<td>لزيادة الظهور في نتائج البحث وتعزيز المبيعات</td>
-</tr>
-</tbody>
-</table>
+<ul>
+<li><strong>Instagram</strong>: منصة مثالية لعرض المنتجات من خلال الصور والفيديوهات القصيرة، خاصة مع التركيز على القصص اليومية.</li>
+<li><strong>Google Ads</strong>: للاستفادة من عمليات البحث المتعلقة بالعسل ومشتقاته، مما يزيد من الظهور في نتائج البحث.</li>
+<li><strong>Snapchat</strong>: نظرًا لشعبية المنصة في السعودية، يمكن استخدامها للوصول إلى جمهور أوسع من الشباب.</li>
+</ul>
 <h2>5. توزيع ميزانية أول شهر</h2>
 <table>
 <thead>
 <tr>
-<th>العنصر</th>
+<th>القناة</th>
 <th>الميزانية (SAR)</th>
-<th>النسبة</th>
+<th>الهدف</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Instagram</td>
 <td>4000</td>
-<td>40%</td>
+<td>زيادة الوعي بالعلامة التجارية</td>
 </tr>
 <tr>
 <td>Google Ads</td>
-<td>4000</td>
-<td>40%</td>
+<td>3000</td>
+<td>جذب الزوار المهتمين بالعسل</td>
 </tr>
 <tr>
-<td>تحسين محركات البحث (SEO)</td>
-<td>2000</td>
-<td>20%</td>
+<td>Snapchat</td>
+<td>3000</td>
+<td>تعزيز التفاعل مع الجمهور الشاب</td>
 </tr>
 </tbody>
 </table>
 <h2>6. خطة إعادة الاستهداف</h2>
 <ul>
-<li>استخدام إعلانات Instagram وGoogle لإعادة استهداف الزوار الذين لم يكملوا عملية الشراء.</li>
+<li>استخدام Google وInstagram لإعادة استهداف الزوار الذين لم يكملوا عملية الشراء، من خلال عروض خاصة أو خصومات.</li>
 </ul>
 <h2>7. فرص زيادة قيمة السلة</h2>
 <ul>
-<li>تقديم عروض شراء متعددة مثل "اشترِ 2 واحصل على 1 مجانًا".</li>
-<li>اقتراح منتجات مكملة عند إضافة منتج إلى السلة.</li>
+<li>تقديم عروض خاصة عند شراء أكثر من منتج.</li>
+<li>توفير خصومات على الشحن عند تجاوز مبلغ معين.</li>
 </ul>
 <h2>8. حملات واتساب</h2>
 <ul>
-<li>إرسال عروض خاصة وتحديثات المنتجات عبر واتساب لزيادة التفاعل الشخصي مع العملاء.</li>
+<li>استخدام واتساب لإرسال العروض الخاصة والتحديثات للعملاء المسجلين في القائمة البريدية.</li>
 </ul>
 <h2>9. خطة المحتوى حسب مراحل الفانل</h2>
 <ul>
-<li><strong>الوعي</strong>: مقاطع فيديو قصيرة على Instagram توضح فوائد العسل.</li>
-<li><strong>الاهتمام</strong>: مقالات في المدونة عن استخدامات العسل الصحية.</li>
-<li><strong>القرار</strong>: شهادات العملاء وتجاربهم مع المنتجات.</li>
+<li><strong>الوعي</strong>: محتوى تعليمي عن فوائد العسل ومشتقاته.</li>
+<li><strong>الاهتمام</strong>: وصفات باستخدام العسل لتعزيز الفائدة.</li>
+<li><strong>القرار</strong>: عروض خاصة وتقييمات العملاء.</li>
 </ul>
 <h2>10. أفضل أشكال الإعلانات لكل منصة</h2>
 <ul>
-<li><strong>Instagram</strong>: صور وفيديوهات قصيرة للمنتجات.</li>
-<li><strong>Google Ads</strong>: إعلانات نصية وصور تظهر في نتائج البحث.</li>
+<li><strong>Instagram</strong>: صور وفيديوهات قصيرة، قصص يومية.</li>
+<li><strong>Google Ads</strong>: إعلانات نصية وصورية.</li>
+<li><strong>Snapchat</strong>: فيديوهات قصيرة مع تأثيرات جذابة.</li>
 </ul>
 <h2>11. الشرائح المستهدفة</h2>
 <ul>
-<li>العائلات السعودية المهتمة بالمنتجات الصحية.</li>
-<li>الأفراد الذين يبحثون عن منتجات طبيعية ذات جودة عالية.</li>
+<li>العائلات المهتمة بالمنتجات الطبيعية.</li>
+<li>الشباب الباحثين عن وصفات صحية.</li>
+<li>الأفراد المهتمين بالمنتجات المحلية.</li>
 </ul>
 <h2>12. فرص تحسين الظهور في Google</h2>
 <ul>
-<li>تحسين الكلمات المفتاحية في وصف المنتجات.</li>
-<li>إنشاء محتوى مدونة غني بالكلمات المفتاحية ذات الصلة.</li>
+<li>تحسين الكلمات المفتاحية في وصف المنتجات والعناوين.</li>
+<li>تعزيز المحتوى التعليمي في المدونة لزيادة الزيارات العضوية.</li>
 </ul>
 <h2>13. إجراءات سريعة التنفيذ</h2>
 <ul>
-<li>تحسين سرعة تحميل الموقع.</li>
-<li>إضافة شهادات العملاء بشكل بارز في صفحات المنتجات.</li>
+<li>تحسين سرعة الموقع.</li>
+<li>تحديث الصور والوصف للمنتجات.</li>
+<li>تحسين وضوح العروض على الصفحة الرئيسية.</li>
 </ul>
 <h2>14. خطة نمو خلال 90 يوم</h2>
 <ul>
 <li><strong>الشهر الأول</strong>: تحسين تجربة المستخدم وزيادة الوعي بالعلامة التجارية.</li>
-<li><strong>الشهر الثاني</strong>: زيادة المبيعات من خلال العروض الترويجية.</li>
-<li><strong>الشهر الثالث</strong>: توسيع قاعدة العملاء عبر حملات إعادة الاستهداف.</li>
+<li><strong>الشهر الثاني</strong>: تعزيز التفاعل مع الجمهور وزيادة المبيعات.</li>
+<li><strong>الشهر الثالث</strong>: توسيع قاعدة العملاء وتحسين الولاء.</li>
 </ul>
 <h2>تقييم المتجر من 10</h2>
 <table>
@@ -533,60 +932,65 @@ tr:nth-child(even) td {
 <tbody>
 <tr>
 <td>تجربة العميل داخل المتجر</td>
-<td>8/10</td>
-<td>تجربة جيدة مع بعض التحسينات في التنقل</td>
+<td>7/10</td>
+<td>تجربة جيدة لكن يمكن تحسين وضوح التنقل</td>
 </tr>
 <tr>
 <td>وضوح العروض</td>
-<td>7/10</td>
-<td>يمكن تحسين وضوح العروض الخاصة</td>
+<td>6/10</td>
+<td>العروض تحتاج لتوضيح أكبر</td>
 </tr>
 <tr>
 <td>الثقة والمصداقية</td>
-<td>9/10</td>
-<td>وجود شهادات العملاء يعزز الثقة</td>
+<td>8/10</td>
+<td>وجود خبرة طويلة يعزز الثقة</td>
 </tr>
 <tr>
 <td>صفحات المنتجات</td>
 <td>7/10</td>
-<td>تحتاج إلى تحسين في الوصف والصور</td>
+<td>تحتاج لإبراز التقييمات والعروض بشكل أوضح</td>
 </tr>
 <tr>
 <td>فرص تحسين معدل التحويل</td>
 <td>7/10</td>
-<td>بعض التحسينات يمكن أن تزيد من التحويل</td>
+<td>تحسين وضوح العروض والتقييمات</td>
 </tr>
 <tr>
 <td>فرص الظهور في Google</td>
 <td>6/10</td>
-<td>تحسين SEO يمكن أن يزيد من الظهور</td>
+<td>تحسين الكلمات المفتاحية والمحتوى</td>
 </tr>
 <tr>
 <td>جاهزية المتجر للإعلانات</td>
 <td>8/10</td>
-<td>المتجر جاهز مع بعض التحسينات البسيطة</td>
+<td>مناسب للإعلانات مع بعض التحسينات</td>
 </tr>
 </tbody>
 </table>
-<p>التقييم النهائي للمتجر هو: 7.5</p>
+<p>التقييم النهائي للمتجر هو: 7</p>
             
-<div class="cta-box">
-    <h2>🚀 الخطوة التالية</h2>
+    <div class="cta-box">
 
-    <p>
-        إذا رغبت في مناقشة هذا التقرير أو تنفيذ خطة النمو،
-        يسعد فريق شركة البط بمساعدتك.
-    </p>
+        <h2>
+            🚀 الخطوة التالية
+        </h2>
 
-    <a class="whatsapp-btn"
-       href="https://wa.me/966541571968?text=السلام عليكم، استلمت تقرير Elbatt AI Suite وأرغب في مناقشته."
-       target="_blank">
+        <p>
+            إذا رغبت في مناقشة هذا التقرير أو تنفيذ خطة النمو، يسعد فريق شركة البط بمساعدتك.
+        </p>
 
-       💬 تواصل معنا عبر WhatsApp
+        <a
+            class="whatsapp-btn"
+            href="https://wa.me/966541571968?text=السلام عليكم، استلمت تقرير Elbatt AI Suite وأرغب في مناقشته."
+            target="_blank">
 
-    </a>
-</div>
+            💬 تواصل عبر WhatsApp
 
+        </a>
+
+    </div>
+
+    
 
 <div class="footer">
     تم إعداد هذا التقرير بواسطة شركة البط للحلول التسويقية والنمو الرقمي
