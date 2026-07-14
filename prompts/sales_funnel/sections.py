@@ -15,6 +15,7 @@ def get_report_sections(report_language: str) -> str:
     - ربط الملاحظات بالأثر التجاري.
     - منع اختراع معلومات غير موجودة.
     - منع تحويل التقرير إلى Media Plan.
+    - توضيح قيمة التنفيذ بواسطة فريق متخصص.
 
     ملاحظة:
     موديول Sales Funnel لا يستخدم الميزانية
@@ -440,70 +441,177 @@ def get_report_sections(report_language: str) -> str:
 - ابدأ بالمكاسب السريعة ثم التحسينات الأعمق.
 - لا تبدأ بحملات إعلانية قبل تجهيز الصفحات المطلوبة لاستقبال الزيارات.
 - لا تفترض وجود فريق كبير.
-- استخدم مسؤوليات مرنة:
-  صاحب المتجر
-  مسؤول المتجر
-  مسؤول التسويق
-  مسؤول المحتوى
-  المطور عند الحاجة
 
-- اجعل قرار نهاية الأسبوع واحدًا من:
-  جاهز للانتقال
-  يحتاج تعديل
-  يستمر الاختبار
-  يؤجل للمرحلة التالية
+استخدم مسؤوليات مرنة مثل:
 
-- لا تستخدم:
-  الاستمرار فقط
-  التعديل فقط
-  الانتقال للمرحلة التالية دون تفسير
+- صاحب المتجر.
+- مسؤول المتجر.
+- مسؤول التسويق.
+- مسؤول المحتوى.
+- المطور عند الحاجة.
+
+اجعل قرار نهاية الأسبوع واحدًا من:
+
+- جاهز للانتقال.
+- يحتاج تعديل.
+- يستمر الاختبار.
+- يؤجل للمرحلة التالية.
+
+لا تستخدم:
+
+- الاستمرار فقط.
+- التعديل فقط.
+- الانتقال للمرحلة التالية دون تفسير.
 
 ==========================================================
 ## 10. ملخص الأولويات التنفيذية
 ==========================================================
 
-أنشئ نهاية تنفيذية قوية قبل دعوة التواصل.
+أنشئ نهاية تنفيذية قوية تساعد فريق المبيعات على:
+
+- تلخيص أهم الأولويات.
+- توضيح منطق التنفيذ.
+- إبراز فرص النمو.
+- شرح قيمة الاستعانة بفريق متخصص.
+- تمهيد العميل للخطوة التالية والتواصل.
+
+==========================================================
+أولًا: أهم 3 أولويات تنفيذية
+==========================================================
 
 قدّم أهم 3 أولويات بالترتيب.
 
 استخدم الشكل التالي:
 
 ### الأولوية الأولى
+
 - اسم الأولوية.
-- لماذا هي الأولى.
+- لماذا تأتي في المرتبة الأولى.
 - الأثر التجاري المتوقع.
 - أول إجراء يجب تنفيذه.
 
 ### الأولوية الثانية
+
 - اسم الأولوية.
-- لماذا تأتي بعد الأولى.
+- لماذا تأتي بعد الأولوية الأولى.
 - الأثر التجاري المتوقع.
 - أول إجراء يجب تنفيذه.
 
 ### الأولوية الثالثة
+
 - اسم الأولوية.
 - لماذا تأتي بعد الأولويتين السابقتين.
 - الأثر التجاري المتوقع.
 - أول إجراء يجب تنفيذه.
 
-ثم أضف:
+قواعد ترتيب الأولويات:
 
-## لماذا يمتلك المتجر فرصة للنمو؟
+- لا تكرر نصوص الجداول السابقة حرفيًا.
+- لخّص المنطق التنفيذي ولا تعِد شرح التقرير.
+- اجعل الأولوية الأولى هي الأعلى تأثيرًا على قرار الشراء.
+- اجعل كل أولوية مرتبطة بمخرج قابل للتنفيذ.
+- لا تستخدم أكثر من 4 نقاط تحت كل أولوية.
 
-اذكر من 3 إلى 5 أسباب مرتبطة فعليًا بالمتجر، مثل:
+==========================================================
+ثانيًا: لماذا يمتلك المتجر فرصة للنمو؟
+==========================================================
 
-- قوة المنتج أو التخصص.
-- وضوح المجال.
+اذكر من 3 إلى 5 أسباب مرتبطة فعليًا بالمتجر.
+
+يمكن أن تشمل الأسباب عند ملاءمتها:
+
+- قوة المنتج أو وضوح التخصص.
+- تنوع المنتجات أو الفئات.
 - قابلية المنتجات لإعادة الشراء.
-- إمكانية بناء الثقة.
-- إمكانية تطوير العروض.
+- إمكانية تعزيز الثقة والمصداقية.
+- إمكانية تطوير العروض والحزم.
 - وجود فرص لرفع متوسط قيمة الطلب.
+- إمكانية بناء تجربة احتفاظ وإعادة شراء.
+- وجود أساس واضح يمكن تطويره بدل البدء من الصفر.
 
-لا تستخدم أسبابًا عامة يمكن وضعها لأي متجر.
+قواعد هذا الجزء:
 
-اختم بجملة تنفيذية قوية:
+- لا تستخدم أسبابًا عامة يمكن وضعها لأي متجر.
+- لا تخترع ميزة لم تظهر في بيانات المتجر.
+- اربط كل سبب بفرصة تجارية واضحة.
+- استخدم لغة إيجابية ومقنعة.
 
-"الخطوة التالية ليست إضافة المزيد من الأنشطة، بل ترتيب الأولويات وتنفيذ التحسينات الأعلى تأثيرًا بالترتيب الصحيح."
+==========================================================
+ثالثًا: لماذا يصعب تنفيذ هذه الخطة دون فريق متخصص؟
+==========================================================
+
+اشرح باختصار أن جودة النتائج لا تعتمد على معرفة التوصيات فقط،
+بل تعتمد أيضًا على:
+
+- دقة التنفيذ.
+- ترتيب الأولويات.
+- التنسيق بين التخصصات.
+- قراءة البيانات.
+- الاختبار المستمر.
+- اتخاذ القرارات في الوقت المناسب.
+
+استخدم جدولًا بالأعمدة التالية:
+
+مجال التنفيذ | لماذا يحتاج إلى خبرة متخصصة؟ | مخاطر التنفيذ غير المنظم
+
+اختر من 4 إلى 6 مجالات مناسبة فقط، مثل:
+
+- تجربة المستخدم وتحسين صفحات المنتجات.
+- تحسين معدل التحويل.
+- تحليل البيانات ومؤشرات الأداء.
+- إعداد التتبع وقياس الأحداث.
+- إدارة الحملات الإعلانية وتحسينها.
+- اختبار الإعلانات والعروض.
+- استعادة السلة المتروكة.
+- أتمتة رسائل ما بعد الشراء.
+- الاحتفاظ وإعادة الشراء.
+- التنسيق بين التسويق والمحتوى والتصميم والتطوير.
+
+استخدم عند الحاجة أفكارًا مثل:
+
+- تحسين صفحة المنتج يحتاج إلى خبرة في تجربة المستخدم
+  وتحسين معدل التحويل.
+
+- رفع معدل التحويل يحتاج إلى قراءة صحيحة للبيانات
+  وليس الاعتماد على الانطباعات.
+
+- تحسين الحملات يحتاج إلى تتبع دقيق
+  واختبارات مستمرة للإعلانات والجمهور والعروض.
+
+- تحسين الاحتفاظ يحتاج إلى أتمتة للرسائل
+  وربط القنوات ببيانات العملاء.
+
+- تنفيذ الخطة يحتاج إلى تنسيق بين التسويق،
+  والمحتوى، والتصميم، والتطوير.
+
+قواعد هذا الجزء:
+
+- لا تهاجم فريق العميل.
+- لا تقل إن العميل غير قادر على التنفيذ.
+- لا تستخدم لغة تخويف أو مبالغة.
+- لا تدّعِ أن التنفيذ مستحيل دون شركة خارجية.
+- لا تحوّل الجزء إلى إعلان مباشر لشركة Elbatt.
+- وضّح أن الفريق المتخصص:
+  يقلل أخطاء التنفيذ،
+  يسرع التعلم،
+  يحسن اتخاذ القرار،
+  ويربط التوصيات بنتائج قابلة للقياس.
+
+بعد الجدول أضف فقرة ختامية قوية بهذا المعنى:
+
+"لهذا السبب تعتمد المتاجر الأسرع نموًا على فريق متخصص
+يجمع بين التسويق، وتحسين تجربة المستخدم، ورفع معدل التحويل،
+وتحليل البيانات، والأتمتة؛ لضمان تنفيذ الأولويات بالترتيب الصحيح
+وتحويل التوصيات إلى نتائج قابلة للقياس."
+
+يمكن تخصيص صياغة الفقرة حسب احتياجات المتجر،
+لكن يجب الحفاظ على معناها الاستشاري.
+
+اختم القسم بهذه الجملة:
+
+"الخطوة التالية ليست إضافة المزيد من الأنشطة،
+بل ترتيب الأولويات، وتوحيد جهود التنفيذ،
+والبدء بالتحسينات الأعلى تأثيرًا بالترتيب الصحيح."
 
 ==========================================================
 قواعد الإخراج النهائية
@@ -712,24 +820,129 @@ Maximum 3 main tasks per week.
 ## 10. Executive Priority Summary
 ==========================================================
 
+Create a strong executive conclusion that helps the sales team:
+
+- Summarize the main priorities.
+- Explain execution logic.
+- Highlight store growth potential.
+- Explain the value of specialized execution.
+- Prepare the client for the next step.
+
+==========================================================
+First: Top Three Execution Priorities
+==========================================================
+
 Present the top 3 priorities.
 
 For each priority include:
 
+### Priority One
+
 - Priority name.
-- Why it ranks at this level.
+- Why it ranks first.
 - Expected commercial impact.
 - First execution action.
 
-Then include:
+### Priority Two
 
-## Why This Store Has Growth Potential
+- Priority name.
+- Why it follows the first priority.
+- Expected commercial impact.
+- First execution action.
+
+### Priority Three
+
+- Priority name.
+- Why it follows the previous priorities.
+- Expected commercial impact.
+- First execution action.
+
+Prioritization rules:
+
+- Do not repeat earlier tables word for word.
+- Summarize the execution logic.
+- Make the first priority closest to the purchase decision.
+- Connect each priority to a clear deliverable.
+- Use no more than 4 points for each priority.
+
+==========================================================
+Second: Why This Store Has Growth Potential
+==========================================================
 
 Provide 3 to 5 store-specific reasons.
 
+Use relevant reasons such as:
+
+- Product strength or clear specialization.
+- Product or category variety.
+- Repeat-purchase potential.
+- Opportunity to strengthen trust.
+- Opportunity to improve offers and bundles.
+- Opportunity to increase average order value.
+- Opportunity to build retention.
+- A strong existing foundation that can be developed.
+
+Rules:
+
+- Do not use generic reasons applicable to every store.
+- Do not invent store strengths.
+- Connect each reason to commercial potential.
+
+==========================================================
+Third: Why This Plan Requires Specialized Execution
+==========================================================
+
+Explain that results depend not only on knowing the recommendations,
+but also on:
+
+- Execution quality.
+- Correct prioritization.
+- Coordination between specialists.
+- Data interpretation.
+- Continuous testing.
+- Timely decision-making.
+
+Use columns:
+
+Execution Area | Why Specialist Expertise Is Required | Risk of Unstructured Execution
+
+Cover only 4 to 6 relevant areas, such as:
+
+- User experience and product-page optimization.
+- Conversion-rate optimization.
+- Data analysis and performance measurement.
+- Tracking and event setup.
+- Paid campaign management and optimization.
+- Creative and offer testing.
+- Cart recovery.
+- Post-purchase automation.
+- Retention and repeat purchase.
+- Coordination between marketing, content, design, and development.
+
+Rules:
+
+- Do not criticize the client’s team.
+- Do not say implementation is impossible without an agency.
+- Avoid fear-based or exaggerated language.
+- Do not turn the section into a direct advertisement.
+- Explain that specialist execution:
+  reduces errors,
+  accelerates learning,
+  improves decision-making,
+  and connects recommendations to measurable outcomes.
+
+After the table, add a strong closing paragraph similar to:
+
+“This is why faster-growing stores rely on a specialized team
+that combines marketing, user experience, conversion optimization,
+data analysis, and automation to execute priorities in the correct
+sequence and turn recommendations into measurable outcomes.”
+
 End with:
 
-“The next step is not to add more activities, but to prioritize and execute the highest-impact improvements in the correct order.”
+“The next step is not to add more activities,
+but to prioritize, coordinate execution,
+and implement the highest-impact improvements in the correct order.”
 
 ==========================================================
 FINAL OUTPUT RULES
